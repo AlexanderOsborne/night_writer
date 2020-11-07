@@ -21,10 +21,9 @@ class CLI
     end
 
     def word_count
-      text = File.open("message.txt", 'r')
+      text = File.open(@to_read, 'r')
       number_of_words = 0
-      # require 'pry'; binding.pry
-      text.each_line(){ |line| number_of_words = number_of_words + line.split.size }
+      text.each_line(){|line| number_of_words = number_of_words + line.split.size}
       number_of_words
     end
 end
