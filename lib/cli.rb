@@ -3,19 +3,29 @@ class CLI
                 :to_write
     
     def initialize
-        @to_read = nil
-        @to_write = nil
+      @to_read = nil
+      @to_write = nil
     end
 
     def get_args
-        # require 'pry'; binding.pry
-        @to_read = ARGV[0]
-        @to_write = ARGV[1]
+      @to_read = ARGV[0]
+      @to_write = ARGV[1]
     end
 
     def output
-        # require 'pry'; binding.pry
-        "Created #{@to_write}" + " containing 256 characters"
+      "Created #{@to_write}" + " containing #{word_count} characters"
+    end
+    
+    def create_file
+       braille = File.new(ARGV[1], "w")
+    end
+
+    def word_count
+      text = File.open("message.txt", 'r')
+      number_of_words = 0
+      # require 'pry'; binding.pry
+      text.each_line(){ |line| number_of_words = number_of_words + line.split.size }
+      number_of_words
     end
 end
 
