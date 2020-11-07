@@ -33,11 +33,3 @@ class Translator
     @library['z'] = '0./n', '.0/n', '00'
   end
 end
-
-
-
-  # def translate_character(character)
-  #   case character
-  #   when ('a')         then charcter.tr('a', '0./n','00/n','..')
-  #   end
-  # end

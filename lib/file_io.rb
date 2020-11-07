@@ -1,6 +1,4 @@
-require './lib/translator'
-
-class CLI
+class IO
     attr_reader :to_read,
                 :to_write,
                 :text,

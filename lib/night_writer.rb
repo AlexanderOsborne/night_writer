@@ -1,20 +1,8 @@
-require './lib/cli'
+require './lib/file_io'
 require './lib/translator'
 
-class NightWriter
-  attr_reader :cli
-
-    def initialize
-      @cli = CLI.new  
-    end
-
-    def output
-      @cli.output
-    end
-
-
-end
-
-
-
+  io = IO.new
+  
+  
+  io.copy
 

@@ -11,8 +11,13 @@ class IOTest < Minitest::Test
       @io.stubs(:ARGV[1]).returns('braille.txt')
     end
 
-    def test_it_exsist
+    def test_it_exsist()
         
       assert_instance_of IO, @io
+    end
+
+    def test_copy()
+
+        assert_equal 0, @io.copy
     end
 end
