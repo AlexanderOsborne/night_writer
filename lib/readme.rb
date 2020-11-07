@@ -14,3 +14,8 @@
 #Internally, we read the file (argument 1) and convert it to braille.
 
 #We then right that braille to the newly created file (argument 2)
+
+#when ('a'..'z')             then character.tr('abcdefghijklmnopqrstuvwxyz', '⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵')
+    
+puts brailleA = '0./n','00/n','..'
+

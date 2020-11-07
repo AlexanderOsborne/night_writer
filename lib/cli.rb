@@ -17,20 +17,15 @@ class CLI
     end
     
     def create_file
-       braille = File.new(ARGV[1], "w")
+       braille = File.new(@to_write, "w")
     end
 
     def word_count
       text = File.open(@to_read, 'r')
       number_of_words = 0
-      text.each_line(){|line| number_of_words = number_of_words + line.split.size}
+      text.each_line() do |line|
+        number_of_words += line.split.size
+      end
       number_of_words
     end
 end
-
-#1 take two arguments (1, what file we want to read) (2, what file we want to create)
-    # create a function to get user arguments(1 and 2) (request)
-        # if invalid prompt again
-    # find the file(first argument), open file and pass string to translator
-        #will be translated to braille
- #2 print file name and length(static) to command line
