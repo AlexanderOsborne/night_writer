@@ -6,12 +6,15 @@ class TranslatorTest < Minitest::Test
   
   def setup
     @translator = Translator.new
-    # populate_translator(@translator)
+    @translator.populate
   end
 
   def test_it_exsist_and_has_attributes
-    require 'pry'; binding.pry
+    # require 'pry'; binding.pry
+    expected = '0./n','00/n','..'
+    
     assert_instance_of Translator, @translator
-    assert_equal '0./n','00/n','..', @translator["a"]
+    assert_equal expected, @translator.library['a']
+    # assert_equal '0./n','00/n','..', @translator.translate_character('a')
   end
 end
