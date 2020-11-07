@@ -1,9 +1,20 @@
 require './lib/cli'
+require './lib/translator'
 
-cli = CLI.new
-cli.get_args
-cli.create_file
+class NightWriter
+  attr_reader :cli
 
-p cli.output
+    def initialize
+      @cli = CLI.new  
+    end
+
+    def output
+      @cli.output
+    end
+
+
+end
+
+
 
 

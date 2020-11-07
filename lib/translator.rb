@@ -2,7 +2,8 @@ class Translator
   attr_reader :library
   
   def initialize
-    @library = Hash.new(0)
+    @library = Hash.new('')
+    @library.populate
   end
 
   def populate
