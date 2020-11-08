@@ -18,12 +18,12 @@ class IOTest < Minitest::Test
 
     def test_word_count
 
-        assert_equal 54, @io.word_count
+        assert_equal 17, @io.word_count
     end
 
     def test_output
 
-      expected = "Created braille.txt" + " containing 55 characters"
+      expected = "Created braille.txt" + " containing 17 characters"
       assert_equal expected, @io.output
     end
 
@@ -35,7 +35,7 @@ class IOTest < Minitest::Test
 
     def test_split_by_char
 
-      expected = ["z", "b"]
+      expected = ["i", "m", " ", "n", "o", "t", " ", "z", "e", "r", "o", " ", "w", "o", "r", "d", "s"]
       assert_equal expected, @io.split_by_char
     end
 end
