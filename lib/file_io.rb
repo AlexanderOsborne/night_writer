@@ -29,4 +29,8 @@ class IO
       @braille.write(text)
       @braille.close
     end
+
+    def split_by_char
+
+    end
 end

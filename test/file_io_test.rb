@@ -32,4 +32,10 @@ class IOTest < Minitest::Test
 
       assert_equal true, File.exist?("braille.txt")
     end
+
+    def test_split_by_char
+
+      expected = [z, b]
+      assert_equal expected, @io.split_by_char
+    end
 end
