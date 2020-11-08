@@ -8,7 +8,6 @@ class IOTest < Minitest::Test
     def setup
       ARGV.replace(['message.txt','braille.txt'])
       @io = IO.new
-      # require 'pry'; binding.pry
     end
 
     def test_it_exsist()
@@ -18,7 +17,7 @@ class IOTest < Minitest::Test
 
     def test_word_count
 
-        assert_equal 17, @io.word_count
+      assert_equal 17, @io.word_count
     end
 
     def test_output
@@ -28,6 +27,7 @@ class IOTest < Minitest::Test
     end
 
     def test_copy
+      
       @io.copy
 
       assert_equal true, File.exist?("braille.txt")
