@@ -4,6 +4,6 @@ require './lib/translator'
   io = IO.new
   io.copy
   puts io.output
-  # puts a
+
 
  

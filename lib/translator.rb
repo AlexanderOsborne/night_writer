@@ -3,7 +3,7 @@ class Translator
   
   def initialize
     @library = Hash.new('')
-    @library.populate
+    populate
   end
 
   def populate
