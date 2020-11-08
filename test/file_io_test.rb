@@ -24,5 +24,12 @@ class IOTest < Minitest::Test
     def test_output
 
       expected = "Created braille.txt" + " containing 9 characters"
+      assert_equal expected, @io.output
+    end
+
+    def test_copy
+      @io.copy
+
+      assert_equal true, File.exist?("braille.txt")
     end
 end
