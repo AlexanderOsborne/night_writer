@@ -18,12 +18,12 @@ class IOTest < Minitest::Test
 
     def test_word_count
 
-        assert_equal 9, @io.word_count
+        assert_equal 55, @io.word_count
     end
 
     def test_output
 
-      expected = "Created braille.txt" + " containing 9 characters"
+      expected = "Created braille.txt" + " containing 55 characters"
       assert_equal expected, @io.output
     end
 

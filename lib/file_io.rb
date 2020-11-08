@@ -15,7 +15,7 @@ class IO
       text2 = File.read(@incoming_text)
       number_of_words = 0
       text2.each_line do |line|
-        number_of_words += line.split.length
+        number_of_words += line.split("").length
       end
       number_of_words
     end
