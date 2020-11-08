@@ -38,8 +38,4 @@ class IOTest < Minitest::Test
       expected = ["i", "m", " ", "n", "o", "t", " ", "z", "e", "r", "o", " ", "w", "o", "r", "d", "s"]
       assert_equal expected, @io.split_by_char
     end
-
-    def test_translate
-
-    end
 end

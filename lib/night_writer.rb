@@ -15,17 +15,31 @@ class NightWriter
 
   def translate
     chars = @io.split_by_char
-    chars.flat_map do |char|
+    translated = chars.map do |char|
       @translator.library[char]
     end
+    first_line = translated.map do |char|
+      char[0]
+    end.join
+    second_line = translated.map do |char|
+      char[1]
+    end.join
+    third_line = translated.map do |char|
+      char[2]
+    end.join
+    all_lines = first_line + "\n" + second_line + "\n" + third_line
+    # require 'pry'; binding.pry
+
+    @io.copy(all_lines)
+    all_lines
   end
 
   def start
-    @io.copy
     p @io.output
   end
 end
 
 nightwriter = NightWriter.new
 nightwriter.start
+nightwriter.translate
   

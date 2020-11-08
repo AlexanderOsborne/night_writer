@@ -19,9 +19,8 @@ class IO
       "Created #{@to_write}" + " containing #{word_count} characters"
     end
 
-    def copy
-      text = File.read(@incoming_text)
-      @braille.write(text)
+    def copy(text)
+      @braille.puts(text)
       @braille.close
     end
 
