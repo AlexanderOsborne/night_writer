@@ -31,5 +31,6 @@ class Translator
     @library['x'] = '00/n', '../n', '00'
     @library['y'] = '00/n', '.0/n', '00'
     @library['z'] = '0./n', '.0/n', '00'
+    @library[" "] = '../n', '../n', '..'
   end
 end

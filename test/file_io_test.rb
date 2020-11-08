@@ -18,7 +18,7 @@ class IOTest < Minitest::Test
 
     def test_word_count
 
-        assert_equal 55, @io.word_count
+        assert_equal 54, @io.word_count
     end
 
     def test_output
@@ -35,7 +35,7 @@ class IOTest < Minitest::Test
 
     def test_split_by_char
 
-      expected = [z, b]
+      expected = ["z", "b"]
       assert_equal expected, @io.split_by_char
     end
 end
