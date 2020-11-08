@@ -1,9 +1,20 @@
 require './lib/file_io'
 require './lib/translator'
+
+class NightWriter
   
-  io = IO.new
-  io.copy
-  puts io.output
+  def initialize
+    
+  end
+
+  def translate
+      
+  end
+end
+  
+  # io = IO.new
+  # io.copy
+  # puts io.output
 
   
  
