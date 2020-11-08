@@ -1,9 +1,9 @@
-require './lib/cli'
+require './lib/file_io'
+require './lib/translator'
+  
+  io = IO.new
+  io.copy
+  puts io.output
 
-cli = CLI.new
-cli.get_args
-cli.create_file
 
-p cli.output
-
-
+ 
