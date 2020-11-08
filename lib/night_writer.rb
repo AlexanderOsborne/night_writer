@@ -5,5 +5,5 @@ require './lib/translator'
   io.copy
   puts io.output
 
-
+  
  

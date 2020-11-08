@@ -30,6 +30,5 @@ class IO
       text2.each_line.flat_map do |line|
         line.split("")
       end
-    end
-   
+    end   
 end
