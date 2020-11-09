@@ -31,7 +31,7 @@ class IO
       end
     end
 
-    def group_by_40
+    def group_by_40_chars
       group = split_by_char.each_slice(40).to_a
     end
 end

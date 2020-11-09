@@ -19,13 +19,12 @@ class NightWriter
   end
 
   def mapped_chars
-    groups = @io.group_by_40
-    chars = @io.split_by_char
-    translated = chars.map do |char|
-      @translator.library[char]
-      require 'pry'; binding.pry
-    end
+  chars = @io.split_by_char
+  translated = chars.map do |char|
+    @translator.library[char]
+    # require 'pry'; binding.pry
   end
+end
 
   def first_line
     first_line = mapped_chars.map do |char|
@@ -50,11 +49,18 @@ class NightWriter
   end
 
   def start
-    p @io.output
+    @io.output
   end
 end
 
 nightwriter = NightWriter.new
-nightwriter.start
+p nightwriter.start
 nightwriter.translate
-  
+
+# def mapped_chars
+#   chars = @io.split_by_char
+#   translated = chars.map do |char|
+#     @translator.library[char]
+#     # require 'pry'; binding.pry
+#   end
+# end
