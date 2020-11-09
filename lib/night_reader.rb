@@ -55,24 +55,24 @@ class NightReader
   end
 
   def index_hash
-    key 0
-    @scanned_lines[0].each do |bit|
-      @braille_hash[key] = bit
+    key = 0
+    @scanned_lines[0].each do |group|
+      @braille_hash[key] = group + ","
       key += 1
     end
-    key 0
-    @scanned_lines[1].each do |bit|
-      @braille_hash[key] = bit
+    key = 0
+    @scanned_lines[1].each do |group|
+      @braille_hash[key] += group + ","
       key += 1
     end
-    key 0
-    @scanned_lines[2].each do |bit|
-      @braille_hash[key] = bit
+    key = 0
+    @scanned_lines[2].each do |group|
+      @braille_hash[key] += group
       key += 1
     end
     @braille_hash
+    require 'pry'; binding.pry
   end
-
 end
 
 nightreader = NightReader.new
