@@ -37,11 +37,4 @@ class Translator
     @library['z'] = '0.', '.0', '00'
     @library[" "] = '..', '..', '..'
   end
-
-  # def populate_english
-  #   braille = @library.invert
-  #   combined = @library.merge(braille)
-  #   combined
-  #   # require 'pry'; binding.pry
-  # end
 end
