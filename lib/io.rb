@@ -20,7 +20,7 @@ class IO
     end
 
     def copy(text)
-      @braille.puts(text)
+      @braille.write(text)
       @braille.close
     end
 
@@ -29,5 +29,10 @@ class IO
       text.each_line.flat_map do |line|
         line.split("")
       end
+    end
+
+    def group_by_40
+      group = split_by_char.each_slice(40).to_a
+      group
     end
 end

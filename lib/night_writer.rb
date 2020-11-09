@@ -19,9 +19,11 @@ class NightWriter
   end
 
   def mapped_chars
+    groups = @io.group_by_40
     chars = @io.split_by_char
     translated = chars.map do |char|
       @translator.library[char]
+      require 'pry'; binding.pry
     end
   end
 
