@@ -41,7 +41,6 @@ class IO
       text.each_char do |c|
         holder << c
       if counter % 40 == 0 
-        # require 'pry'; binding.pry
         holder << "\n"
       end
       counter += 1
