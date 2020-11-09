@@ -33,9 +33,13 @@ class NightWriter
     @io.copy(all_lines)
     all_lines
   end
+
+  def start
+    p @io.output
+  end
 end
 
 nightwriter = NightWriter.new
-p nightwriter.io.output
+nightwriter.start
 nightwriter.translate
   
