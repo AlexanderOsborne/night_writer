@@ -7,7 +7,8 @@ class NightReader
               :to_write,
               :lines,
               :sorted_lines,
-              :scanned_lines
+              :scanned_lines,
+              :braille_hash
 
   def initialize
     @io = IO.new
@@ -17,6 +18,7 @@ class NightReader
     @lines         = []
     @sorted_lines  = []
     @scanned_lines = []
+    @braille_hash  = Hash.new
   end
   
   def start
@@ -49,8 +51,28 @@ class NightReader
     @sorted_lines.each do |line|
       @scanned_lines << line.scan(/../)
     end
-    @scanned_lines = @scanned_lines
+    @scanned_lines
   end
+
+  def index_hash
+    key 0
+    @scanned_lines[0].each do |bit|
+      @braille_hash[key] = bit
+      key += 1
+    end
+    key 0
+    @scanned_lines[1].each do |bit|
+      @braille_hash[key] = bit
+      key += 1
+    end
+    key 0
+    @scanned_lines[2].each do |bit|
+      @braille_hash[key] = bit
+      key += 1
+    end
+    @braille_hash
+  end
+
 end
 
 nightreader = NightReader.new
