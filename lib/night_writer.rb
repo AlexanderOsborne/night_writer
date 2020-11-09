@@ -34,12 +34,12 @@ class NightWriter
     all_lines
   end
 
-  def start
-    p @io.output
-  end
+  # def start
+  #   p @io.output
+  # end
 end
 
 nightwriter = NightWriter.new
-nightwriter.start
+p nightwriter.io.output
 nightwriter.translate
   
