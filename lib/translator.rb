@@ -12,6 +12,7 @@ class Translator
     @library['c'] = '00', '..', '..'
     @library['d'] = '00', '.0', '..'
     @library['e'] = '0.', '.0', '..'
+    @library['f'] = '00', '0.', '..'
     @library['g'] = '00', '00', '..'
     @library['h'] = '0.', '00', '..'
     @library['i'] = '.0', '0.', '..'
@@ -33,5 +34,6 @@ class Translator
     @library['y'] = '00', '.0', '00'
     @library['z'] = '0.', '.0', '00'
     @library[" "] = '..', '..', '..'
+    @library["\n"] = "\n", "\n", "\n"
   end
 end
