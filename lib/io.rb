@@ -33,6 +33,5 @@ class IO
 
     def group_by_40
       group = split_by_char.each_slice(40).to_a
-      group
     end
 end
