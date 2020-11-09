@@ -19,4 +19,8 @@ class TranslatorTest < Minitest::Test
     assert_equal expected2, @translator.library['q']
     assert_equal expected3, @translator.braille[['0.', '..', '..']]
   end
+
+  def test_populate
+    skip
+  end
 end
