@@ -24,7 +24,7 @@ class NightReader
   end
 
   def lines
-    @lines = IO.readlines(@braille_text, chomp:true)
+    @lines = File.read(@braille_text).split("\n")
   end
 
   def sort_lines
@@ -39,11 +39,18 @@ class NightReader
       else @lines.index(line) % 3 == 2
         bot += line
       end
-      @sorted_lines << top
-      @sorted_lines << mid
-      @sorted_lines << bot
     end
+    @sorted_lines << top
+    @sorted_lines << mid
+    @sorted_lines << bot
   end 
+
+  def line_by_char
+    @sorted_lines.each do |line|
+      @scanned_lines << line.scan(/../)
+    end
+    @scanned_lines = @scanned_lines
+  end
 end
 
 nightreader = NightReader.new
