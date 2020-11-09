@@ -13,7 +13,7 @@ class TranslatorTest < Minitest::Test
     expected2 = '00/n', '00/n', '0.'
 
     assert_instance_of Translator, @translator
-    # assert_equal expected, @translator['a']
-    # assert_equal expected2, @translator['q']
+    assert_equal expected, @translator['a']
+    assert_equal expected2, @translator['q']
   end
 end
