@@ -36,7 +36,7 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_line_by_char
-    
+
     @nightreader.lines
     @nightreader.sort_lines
     @nightreader.line_by_char
@@ -53,6 +53,6 @@ class NightReaderTest < Minitest::Test
     @nightreader.line_by_char
     @nightreader.index_hash
 
-    assert_equal "a", @nightreader.braille_hash[['0.', '..', '..']]
+    assert_equal true, @nightreader.braille_hash.has_value?("0., 00, 0.")
   end
 end

@@ -37,7 +37,6 @@ class NightWriter
       end
       results << "\n"
       end
-      # require 'pry'; binding.pry
     results
   end
 
