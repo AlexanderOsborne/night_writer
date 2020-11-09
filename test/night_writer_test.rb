@@ -17,13 +17,6 @@ class NightWriterTest < Minitest::Test
     assert_instance_of IO, @nightwriter.io
   end
 
-  def test_start
-    
-    expected = "Created braille.txt" + " containing 17 characters"
-    
-    assert_equal expected, @nightwriter.start
-  end
-
   def test_translate
 
     expected = ".000..000..0..0.0.0.0....00.0.00.0\n0......0.000...0.000.0..00.000.00.\n..0...0.0.0...00..0.0....00.0...0."
