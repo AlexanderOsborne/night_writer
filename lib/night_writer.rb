@@ -17,11 +17,7 @@ class NightWriter
     filecontents = @io.group_by_40
     output = by_line(filecontents)
     @io.copy(output)
-  end
-
-  def all_lines
-    # require 'pry'; binding.pry
-    all_lines = first_line + "\n" + second_line + "\n" + third_line
+    output #for testing
   end
 
   def by_line(text)
@@ -59,6 +55,11 @@ nightwriter.translate
 #   translated = chars.map do |char|
 #     @translator.library[char]
 #   end
+# end
+
+# def all_lines
+#   # require 'pry'; binding.pry
+#   all_lines = first_line + "\n" + second_line + "\n" + third_line
 # end
 
 #   def first_line
