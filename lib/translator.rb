@@ -34,5 +34,6 @@ class Translator
     @library['y'] = '00', '.0', '00'
     @library['z'] = '0.', '.0', '00'
     @library[" "] = '..', '..', '..'
+    @library["\n"] = "\n", "\n", "\n"
   end
 end

@@ -14,38 +14,35 @@ class NightWriter
   end
 
   def translate
-    @io.copy(all_lines)
-    all_lines
-  end
-
-  def mapped_chars
-  chars = @io.split_by_char
-  translated = chars.map do |char|
-    @translator.library[char]
-    # require 'pry'; binding.pry
-  end
-end
-
-  def first_line
-    first_line = mapped_chars.map do |char|
-      char[0]
-    end.join
-  end
-
-  def second_line
-    second_line = mapped_chars.map do |char|
-      char[1]
-    end.join
-  end
-
-  def third_line
-    third_line = mapped_chars.map do |char|
-      char[2]
-    end.join
+    filecontents = @io.group_by_40
+    output = by_line(filecontents)
+    @io.copy(output)
   end
 
   def all_lines
+    # require 'pry'; binding.pry
     all_lines = first_line + "\n" + second_line + "\n" + third_line
+  end
+
+  def by_line(text)
+    lines = text.split("\n")
+    results = ""
+    lines.each do |line| #40 chars of english
+      line.each_char do |c|
+        results << @translator.library[c][0]
+      end
+      results << "\n"
+      line.each_char do |c|
+        results << @translator.library[c][1]
+      end
+      results << "\n"
+      line.each_char do |c|
+        results << @translator.library[c][2]
+      end
+      results << "\n"
+      end
+      # require 'pry'; binding.pry
+    results
   end
 
   def start
@@ -61,6 +58,23 @@ nightwriter.translate
 #   chars = @io.split_by_char
 #   translated = chars.map do |char|
 #     @translator.library[char]
-#     # require 'pry'; binding.pry
 #   end
 # end
+
+#   def first_line
+#     first_line = mapped_chars.map do |char|
+#       char[0]
+#     end.join
+#   end
+
+#   def second_line
+#     second_line = mapped_chars.map do |char|
+#       char[1]
+#     end.join
+#   end
+
+#   def third_line
+#     third_line = mapped_chars.map do |char|
+#       char[2]
+#     end.join
+#   end

@@ -26,12 +26,26 @@ class IO
 
     def split_by_char
       text = File.read(@incoming_text)
-      text.each_line.flat_map do |line|
-        line.split("")
-      end
+      group_by_40.split("")
     end
 
-    def group_by_40_chars
-      group = split_by_char.each_slice(40).to_a
+    # def group_by_40_chars
+    #   split_by_char.each_slice(40).map(&:join).join('\n')
+    # end
+
+    def group_by_40
+      text = File.read(@incoming_text)
+      
+      counter = 1
+      holder = ""
+      text.each_char do |c|
+        holder << c
+      if counter % 40 == 0 
+        # require 'pry'; binding.pry
+        holder << "\n"
+      end
+      counter += 1
+      end
+      holder
     end
 end

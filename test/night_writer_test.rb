@@ -18,9 +18,16 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_translate
-
+    skip
     expected = ".000..000..0..0.0.0.0....00.0.00.0\n0......0.000...0.000.0..00.000.00.\n..0...0.0.0...00..0.0....00.0...0."
 
     assert_equal expected, @nightwriter.translate
+  end
+
+
+  def test_by_line
+    skip
+    expected = 0
+  assert_equal expected, @nightwriter.by_line("message.txt")
   end
 end
