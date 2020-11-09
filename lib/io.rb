@@ -25,8 +25,8 @@ class IO
     end
 
     def split_by_char
-      text2 = File.read(@incoming_text)
-      text2.each_line.flat_map do |line|
+      text = File.read(@incoming_text)
+      text.each_line.flat_map do |line|
         line.split("")
       end
     end
