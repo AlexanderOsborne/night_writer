@@ -6,15 +6,17 @@ class NightReader
               :to_read,
               :to_write,
               :lines,
-              :sorted_lines
+              :sorted_lines,
+              :scanned_lines
 
   def initialize
     @io = IO.new
-    @braille_text = @io.to_read
-    @english_text = @io.to_write
-    @translator   = Translator.new
-    @lines        = []
-    @sorted_lines = []
+    @braille_text  = @io.to_read
+    @english_text  = @io.to_write
+    @translator    = Translator.new
+    @lines         = []
+    @sorted_lines  = []
+    @scanned_lines = []
   end
   
   def start
@@ -29,7 +31,6 @@ class NightReader
     top = ""
     mid = ""
     bot = ""
-
     @lines.each do |line|
       if @lines.index(line) % 3 == 0
         top += line
@@ -42,29 +43,8 @@ class NightReader
       @sorted_lines << mid
       @sorted_lines << bot
     end
-  end
+  end 
 end
 
 nightreader = NightReader.new
 p nightreader.start
-
- # def by_line(text)
-  #   lines = text.split("\n")
-  #   results = ""
-  #   lines.each do |line| #40 chars of english
-  #     line.each_char do |c|
-  #       results << @translator.library[c][0]
-  #     end
-  #     results << "\n"
-  #     line.each_char do |c|
-  #       results << @translator.library[c][1]
-  #     end
-  #     results << "\n"
-  #     line.each_char do |c|
-  #       results << @translator.library[c][2]
-  #     end
-  #     results << "\n"
-  #     end
-  #     # require 'pry'; binding.pry
-  #   results
-  # end
