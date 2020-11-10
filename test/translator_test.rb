@@ -9,11 +9,18 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_exsist_and_has_attributes
-    expected = '0./n','00/n','..'
-    expected2 = '00/n', '00/n', '0.'
+    
+    expected = '0.', '..', '..'
+    expected2 = '00', '00', '0.'
+    expected3 = 'a'
 
     assert_instance_of Translator, @translator
-    assert_equal expected, @translator['a']
-    assert_equal expected2, @translator['q']
+    assert_equal expected, @translator.library['a']
+    assert_equal expected2, @translator.library['q']
+    assert_equal expected3, @translator.braille[['0.', '..', '..']]
+  end
+
+  def test_populate
+    skip
   end
 end

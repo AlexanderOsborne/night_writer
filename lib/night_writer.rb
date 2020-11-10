@@ -2,14 +2,11 @@ require './lib/io'
 require './lib/translator'
 
 class NightWriter
-  attr_reader :io,
-              :to_read,
-              :to_write
+  attr_reader :inputfile,
+              :outputfile
 
-  def initialize
-    @io = IO.new
-    @to_read = @io.to_read
-    @to_write = @io.to_write
+  def initialize(inputfile, outputfile)
+    @io = IO.new(inputfile, outputfile)
     @translator = Translator.new
   end
 
@@ -37,7 +34,6 @@ class NightWriter
       end
       results << "\n"
       end
-      # require 'pry'; binding.pry
     results
   end
 
@@ -46,36 +42,6 @@ class NightWriter
   end
 end
 
-nightwriter = NightWriter.new
+nightwriter = NightWriter.new(ARGV[0], ARGV[1])
 p nightwriter.start
 nightwriter.translate
-
-# def mapped_chars
-#   chars = @io.split_by_char
-#   translated = chars.map do |char|
-#     @translator.library[char]
-#   end
-# end
-
-# def all_lines
-#   # require 'pry'; binding.pry
-#   all_lines = first_line + "\n" + second_line + "\n" + third_line
-# end
-
-#   def first_line
-#     first_line = mapped_chars.map do |char|
-#       char[0]
-#     end.join
-#   end
-
-#   def second_line
-#     second_line = mapped_chars.map do |char|
-#       char[1]
-#     end.join
-#   end
-
-#   def third_line
-#     third_line = mapped_chars.map do |char|
-#       char[2]
-#     end.join
-#   end

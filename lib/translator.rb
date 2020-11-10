@@ -1,12 +1,14 @@
 class Translator
-  attr_reader :library
+  attr_reader :library,
+              :braille
   
   def initialize
     @library = Hash.new('')
-    populate_letters
+    populate
+    @braille = @library.invert
   end
 
-  def populate_letters
+  def populate
     @library['a'] = '0.', '..', '..'
     @library['b'] = '0.', '0.', '..'
     @library['c'] = '00', '..', '..'
@@ -34,6 +36,5 @@ class Translator
     @library['y'] = '00', '.0', '00'
     @library['z'] = '0.', '.0', '00'
     @library[" "] = '..', '..', '..'
-    @library["\n"] = "\n", "\n", "\n"
   end
 end
