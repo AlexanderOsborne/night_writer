@@ -76,8 +76,8 @@ class NightReaderTest < Minitest::Test
     assert_equal equal, @nightreader.output
   end
 
-  def word_count
-
-    assert_equal
+  def test_word_count
+    
+    assert_equal 69, @nightreader.word_count
   end
 end
