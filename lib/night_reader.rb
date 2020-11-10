@@ -10,8 +10,8 @@ class NightReader
               :scanned_lines,
               :braille_hash
 
-  def initialize
-    @io = IO.new
+  def initialize(inputfile, outputfile)
+    @io = IO.new(inputfile, outputfile)
     @braille_text  = @io.to_read
     @english_text  = @io.to_write
     @translator    = Translator.new
@@ -56,17 +56,17 @@ class NightReader
 
   def index_hash
     key = 0
-    @scanned_lines[0].each do |group|
+    line_by_char[0].each do |group|
       @braille_hash[key] = group + " "
       key += 1
     end
     key = 0
-    @scanned_lines[1].each do |group|
+    line_by_char[1].each do |group|
       @braille_hash[key] += group + " "
       key += 1
     end
     key = 0
-    @scanned_lines[2].each do |group|
+    line_by_char[2].each do |group|
       @braille_hash[key] += group
       key += 1
     end
@@ -75,7 +75,7 @@ class NightReader
 
   def translate
     results = []
-    @braille_hash.each do |key, value|
+    index_hash.each do |key, value|
       results << @translator.braille[value.split] 
     end
     results = results.join
@@ -83,10 +83,8 @@ class NightReader
   end
 end
 
-nightreader = NightReader.new
+nightreader = NightReader.new(ARGV[0], ARGV[1])
 p nightreader.start
 nightreader.lines
 nightreader.sort_lines
-nightreader.line_by_char
-nightreader.index_hash
 nightreader.translate

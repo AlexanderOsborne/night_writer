@@ -3,13 +3,11 @@ require './lib/translator'
 
 class NightWriter
   attr_reader :io,
-              :to_read,
-              :to_write
+              :inputfile,
+              :outputfile
 
-  def initialize
-    @io = IO.new
-    @to_read = @io.to_read
-    @to_write = @io.to_write
+  def initialize(inputfile, outputfile)
+    @io = IO.new(inputfile, outputfile)
     @translator = Translator.new
   end
 
@@ -45,6 +43,6 @@ class NightWriter
   end
 end
 
-nightwriter = NightWriter.new
+nightwriter = NightWriter.new(ARGV[0], ARGV[1])
 p nightwriter.start
 nightwriter.translate
