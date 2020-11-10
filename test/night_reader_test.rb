@@ -20,7 +20,7 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_read_line
-    
+
     expected = [".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...00",
       "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0.",
       "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0...........",
@@ -61,7 +61,7 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_translate
-
+    skip
     @nightreader.read_lines
     @nightreader.sort_lines
     @nightreader.line_by_char
