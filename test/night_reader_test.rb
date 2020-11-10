@@ -55,4 +55,15 @@ class NightReaderTest < Minitest::Test
 
     assert_equal true, @nightreader.braille_hash.has_value?("0., 00, 0.")
   end
+
+  def test_translate
+
+    @nightreader.lines
+    @nightreader.sort_lines
+    @nightreader.line_by_char
+    @nightreader.index_hash
+
+    expected = []
+    assert_equal expected @nightreader.translate
+  end
 end
