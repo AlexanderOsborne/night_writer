@@ -1,6 +1,6 @@
+require './test/test_helper'
 require 'Minitest/autorun'
 require 'Minitest/pride'
-require 'mocha/minitest'
 require './lib/io'
 
 class IOTest < Minitest::Test

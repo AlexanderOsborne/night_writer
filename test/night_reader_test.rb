@@ -1,14 +1,10 @@
-require 'Minitest/autorun'
-require 'Minitest/pride'
-require './lib/night_reader'
-require './lib/io'
-require './lib/translator'
+require './test/test_helper'
 
 class NightReaderTest < Minitest::Test
   
   def setup
-    @nightreader = NightReader.new "braille.txt", "original_message.txt"
     @io = IO.new "braille.txt", "original_message.txt"
+    @nightreader = NightReader.new "braille.txt", "original_message.txt"
   end
 
   def test_it_exsist
@@ -47,7 +43,7 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_braille_hash
-
+    skip
     @nightreader.lines
     @nightreader.sort_lines
     @nightreader.line_by_char

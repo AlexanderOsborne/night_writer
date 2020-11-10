@@ -15,7 +15,6 @@ class NightWriter
     filecontents = @io.group_by_40
     output = by_line(filecontents)
     @io.copy(output)
-    output #for testing
   end
 
   def by_line(text)
