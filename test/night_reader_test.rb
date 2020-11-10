@@ -11,7 +11,6 @@ class NightReaderTest < Minitest::Test
   def setup
     @io = IO.new "braille.txt", "original_message.txt"
     @nightreader = NightReader.new "braille.txt", "original_message.txt"
-    @braille_text  = "thisisabigdummystringoftext"
   end
 
   def test_it_exsist
@@ -61,13 +60,13 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_translate
-    skip
+    
     @nightreader.read_lines
     @nightreader.sort_lines
     @nightreader.line_by_char
     @nightreader.index_hash
 
-    assert_equal nil, @nightreader.translate
+    assert_nil @nightreader.translate
   end
 
   def test_output
