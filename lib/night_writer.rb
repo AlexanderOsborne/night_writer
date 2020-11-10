@@ -20,7 +20,7 @@ class NightWriter
   def by_line(text)
     lines = text.split("\n")
     results = ""
-    lines.each do |line| #40 chars of english
+    lines.each do |line|
       line.each_char do |c|
         results << @translator.library[c][0]
       end

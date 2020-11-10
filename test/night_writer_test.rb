@@ -29,7 +29,6 @@ class NightWriterTest < Minitest::Test
     assert_equal expected, @nightwriter.translate
   end
 
-
   def test_by_line
  
     expected = "000.000000...00.00.0..000.0....00..0.0.00000\n.0.......0..00.0..00..0..000..00.00.000..000\n..000.0.00..0...000.....0.0...0...0.0...0...\n"
