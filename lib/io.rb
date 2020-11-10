@@ -13,7 +13,7 @@ class IO
 
     def read
       @incoming_text = File.open(@to_read, 'r')
-      @text = File.read(@incoming_text)
+      @text = File.read(@incoming_text).downcase
     end
 
     def word_count
