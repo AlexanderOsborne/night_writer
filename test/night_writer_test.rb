@@ -7,14 +7,13 @@ require './lib/translator'
 class NightWriterTest < Minitest::Test
   
   def setup
-    @nightwriter = NightWriter.new
-    ARGV.replace(['message.txt','braille.txt'])
+    @nightwriter = NightWriter.new 'message.txt', 'braille.txt'
+    @nightwriter.start
   end
 
   def test_it_exsist
 
     assert_instance_of NightWriter, @nightwriter
-    assert_instance_of IO, @nightwriter.io
   end
 
   def test_translate

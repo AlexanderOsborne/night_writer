@@ -34,7 +34,7 @@ class IOTest < Minitest::Test
     end
 
     def test_split_by_char
-
+      skip
       expected = ["i", "m", " ", "n", "o", "t", " ", "z", "e", "r", "o", " ", "w", "o", "r", "d", "s", " ", "i", " ", "a", "m", " ", "h", "o", "w", "e", "v", "e", "r", " ", "q", "u", "i", "t", "e", " ", "a", " ", "f", "
         +", "e", "w", " ", "m", "o", "r", "e", " ", "t", "h", "a", "n", " ", "f", "o", "r", "t", "y", " ", "c", "h", "a", "r", "a", "c", "t", "e", "r", "s"]
       assert_equal expected, @io.split_by_char

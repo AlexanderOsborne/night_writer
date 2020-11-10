@@ -3,7 +3,8 @@ require './lib/translator'
 
 class NightWriter
   attr_reader :inputfile,
-              :outputfile
+              :outputfile,
+              :io
 
   def initialize(inputfile, outputfile)
     @io = IO.new(inputfile, outputfile)

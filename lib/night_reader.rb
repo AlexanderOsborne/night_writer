@@ -78,7 +78,6 @@ class NightReader
     results = []
     index_hash.each do |key, value|
       results << @translator.braille[value.split] 
-      require 'pry'; binding.pry
     end
     results = results.join
     @io.copy(results)

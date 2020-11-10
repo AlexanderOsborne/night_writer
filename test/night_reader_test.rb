@@ -8,6 +8,7 @@ class NightReaderTest < Minitest::Test
   
   def setup
     @nightreader = NightReader.new "braille.txt", "original_message.txt"
+    @io = IO.new "braille.txt", "original_message.txt"
   end
 
   def test_it_exsist
@@ -56,7 +57,7 @@ class NightReaderTest < Minitest::Test
   end
 
   def test_translate
-
+    skip
     @nightreader.lines
     @nightreader.sort_lines
     @nightreader.line_by_char
