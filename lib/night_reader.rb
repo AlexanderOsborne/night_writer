@@ -2,19 +2,20 @@ require './lib/io'
 require './lib/translator'
 
 class NightReader
-  attr_reader :io,
-              :to_read,
+  attr_reader :to_read,
               :to_write,
               :lines,
               :sorted_lines,
               :scanned_lines,
-              :braille_hash
+              :braille_hash,
+              :braille_text,
+              :english_text
 
   def initialize(inputfile, outputfile)
     @io = IO.new(inputfile, outputfile)
-    @braille_text  = @io.to_read
-    @english_text  = @io.to_write
     @translator    = Translator.new
+    @braille_text  = inputfile
+    @english_text  = outputfile
     @lines         = []
     @sorted_lines  = []
     @scanned_lines = []
@@ -77,14 +78,23 @@ class NightReader
     results = []
     index_hash.each do |key, value|
       results << @translator.braille[value.split] 
+      require 'pry'; binding.pry
     end
     results = results.join
     @io.copy(results)
   end
+
+  def output
+    "Created #{@english_text}" + " containing #{word_count} characters"
+  end
+
+  def word_count
+    File.readlines(@english_text).join.length
+  end
 end
 
 nightreader = NightReader.new(ARGV[0], ARGV[1])
-p nightreader.start
 nightreader.lines
 nightreader.sort_lines
 nightreader.translate
+p nightreader.output

@@ -2,8 +2,7 @@ require './lib/io'
 require './lib/translator'
 
 class NightWriter
-  attr_reader :io,
-              :inputfile,
+  attr_reader :inputfile,
               :outputfile
 
   def initialize(inputfile, outputfile)

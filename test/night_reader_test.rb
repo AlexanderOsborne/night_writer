@@ -7,8 +7,7 @@ require './lib/translator'
 class NightReaderTest < Minitest::Test
   
   def setup
-    @nightreader = NightReader.new
-    ARGV.replace(['braille.txt','original_message.txt'])
+    @nightreader = NightReader.new "braille.txt", "original_message.txt"
   end
 
   def test_it_exsist
@@ -19,7 +18,7 @@ class NightReaderTest < Minitest::Test
   def test_line
     
     expected = [".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...00", "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0.", "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0...........", "0..0..000.0.0....00.0.00..000.0..000..000.0.0.0.00.00.0..0", ".000.....000.0..0000...0..0..00000.0....00..00....00.0000.", "...0..0.0.0.....0.....0.....0.0.0.00........0.....0...0.0."]
-    assert_equal expected , @nightreader.lines
+    assert_equal expected, @nightreader.lines
   end
 
   def test_sort_line
@@ -53,7 +52,7 @@ class NightReaderTest < Minitest::Test
     @nightreader.line_by_char
     @nightreader.index_hash
 
-    assert_equal true, @nightreader.braille_hash.has_value?("0., 00, 0.")
+    assert_equal true, @nightreader.braille_hash.has_value?(["0., 00, 0."])
   end
 
   def test_translate
