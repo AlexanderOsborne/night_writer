@@ -57,12 +57,12 @@ class NightReader
   def index_hash
     key = 0
     @scanned_lines[0].each do |group|
-      @braille_hash[key] = group + "," + " "
+      @braille_hash[key] = group + " "
       key += 1
     end
     key = 0
     @scanned_lines[1].each do |group|
-      @braille_hash[key] += group + "," + " "
+      @braille_hash[key] += group + " "
       key += 1
     end
     key = 0
@@ -70,10 +70,23 @@ class NightReader
       @braille_hash[key] += group
       key += 1
     end
-    # require 'pry'; binding.pry
     @braille_hash
+  end
+
+  def translate
+    results = []
+    @braille_hash.each do |key, value|
+      results << @translator.braille[value.split] 
+    end
+    results = results.join
+    @io.copy(results)
   end
 end
 
 nightreader = NightReader.new
 p nightreader.start
+nightreader.lines
+nightreader.sort_lines
+nightreader.line_by_char
+nightreader.index_hash
+nightreader.translate
