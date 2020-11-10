@@ -26,7 +26,7 @@ class NightReader
     @io.output
   end
 
-  def lines
+  def read_lines
     @lines = File.read(@braille_text).split("\n")
   end
 
@@ -93,7 +93,7 @@ class NightReader
 end
 
 nightreader = NightReader.new(ARGV[0], ARGV[1])
-nightreader.lines
+nightreader.read_lines
 nightreader.sort_lines
 nightreader.translate
 p nightreader.output

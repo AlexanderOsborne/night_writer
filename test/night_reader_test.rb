@@ -1,14 +1,16 @@
+require 'simplecov'
+SimpleCov.start
 require 'Minitest/autorun'
 require 'Minitest/pride'
-require './lib/night_reader'
 require './lib/io'
+require './lib/night_reader'
 require './lib/translator'
 
 class NightReaderTest < Minitest::Test
   
   def setup
-    @nightreader = NightReader.new "braille.txt", "original_message.txt"
     @io = IO.new "braille.txt", "original_message.txt"
+    @nightreader = NightReader.new "braille.txt", "original_message.txt"
   end
 
   def test_it_exsist
@@ -16,28 +18,29 @@ class NightReaderTest < Minitest::Test
     assert_instance_of NightReader, @nightreader
   end
 
-  def test_line
-    
-    expected = [".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...00", "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0.", "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0...........", "0..0..000.0.0....00.0.00..000.0..000..000.0.0.0.00.00.0..0", ".000.....000.0..0000...0..0..00000.0....00..00....00.0000.", "...0..0.0.0.....0.....0.....0.0.0.00........0.....0...0.0."]
-    assert_equal expected, @nightreader.lines
+  def test_read_line
+
+    expected = [".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...00",
+      "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0.",
+      "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0...........",
+      "0..0..000.0.0....00.0.00..000.0..000..000.0.0.0.00.00.0..0",
+      ".000.....000.0..0000...0..0..00000.0....00..00....00.0000.",
+      "...0..0.0.0.....0.....0.....0.0.0.00........0.....0...0.0."]
+    assert_equal expected, @nightreader.read_lines
   end
 
   def test_sort_line
-    
-    @nightreader.lines
-
+    @nightreader.read_lines
     @nightreader.sort_lines
     
-    expected = [".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...000..0..000.0.0....00.0.00..000.0..000..000.0.0.0.00.00.0..0",
-      "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0..000.....000.0..0000...0..0..00000.0....00..00....00.0000.",
-      "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0..............0..0.0.0.....0.....0.....0.0.0.00........0.....0...0.0."]
+    expected = [".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...000..0..000.0.0....00.0.00..000.0..000..000.0.0.0.00.00.0..0", "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0..000.....000.0..0000...0..0..00000.0....00..00....00.0000.", "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0..............0..0.0.0.....0.....0.....0.0.0.00........0.....0...0.0.", ".000..000..0..0.0.0.0....00.0.00.0...0..0.00..0.0..00.0.0.0...000..0.00...0...000..0..000.0.0....00.0.00..000.0..000..000.0.0.0.00.00.0..0", "0......0.000...0.000.0..00.000.00...0.........00.000.00..000..00..0.00.0......0..000.....000.0..0000...0..0..00000.0....00..00....00.0000.", "..0...0.0.0...00..0.0....00.0...0.........0.....0..0..00..0...0.00..0..............0..0.0.0.....0.....0.....0.0.0.00........0.....0...0.0."]
   
-    assert_equal expected, @nightreader.sorted_lines
+    assert_equal expected, @nightreader.sort_lines
   end
 
   def test_line_by_char
 
-    @nightreader.lines
+    @nightreader.read_lines
     @nightreader.sort_lines
     @nightreader.line_by_char
 
@@ -46,24 +49,34 @@ class NightReaderTest < Minitest::Test
     assert_equal expected, @nightreader.scanned_lines
   end
 
-  def test_braille_hash
-
-    @nightreader.lines
+  def test_index_hash
+  
+    @nightreader.read_lines
     @nightreader.sort_lines
     @nightreader.line_by_char
     @nightreader.index_hash
 
-    assert_equal true, @nightreader.braille_hash.has_value?(["0., 00, 0."])
+    assert_equal true, @nightreader.braille_hash.has_value?("0. 00 ..")
   end
 
   def test_translate
-    skip
-    @nightreader.lines
+    
+    @nightreader.read_lines
     @nightreader.sort_lines
     @nightreader.line_by_char
     @nightreader.index_hash
 
-    expected = []
-    assert_equal expected @nightreader.translate
+    assert_nil @nightreader.translate
+  end
+
+  def test_output
+
+    equal = "Created original_message.txt containing 69 characters"
+    assert_equal equal, @nightreader.output
+  end
+
+  def test_word_count
+    
+    assert_equal 69, @nightreader.word_count
   end
 end
